@@ -126,12 +126,12 @@ if graph:
         os.makedirs(output_dir)
     
     # Plot the histogram of income
-    inc_data = data['HEFAMINC']
+    inc_data = data['HEFAMINC'].abs()
     fig, ax = plt.subplots()
     num_bins = 16
     weights = (1/inc_data.shape[0]) * np.ones_like(inc_data)
     n, bin_cuts, patches = plt.hist(inc_data, num_bins, weights = weights)
-    plt.xlim([-1,16])
+    plt.xlim([0,16])
     plt.title('Frequency histogram of the family income index',fontsize = 17)
     plt.xlabel('Family Income Index')
     plt.ylabel('Frequency')
@@ -146,11 +146,11 @@ if graph:
     # HUSPNISH: is Spanish the only language spoken by all members of this household
     # who are 15 years of age or older? yes 1
     # Plot the histogram of income
-    inc_data1 = data1['HEFAMINC']
+    inc_data1 = data1['HEFAMINC'].abs()
     fig, ax = plt.subplots()
     weights1 = (1/inc_data1.shape[0]) * np.ones_like(inc_data1)
     n, bin_cuts, patches = plt.hist(inc_data1, num_bins, weights = weights1)
-    plt.xlim([-1,16])
+    plt.xlim([0,16])
     plt.title('Frequency histogram of Spanish only family income index',fontsize = 17)
     plt.xlabel('Family Income Index')
     plt.ylabel('Frequency')
